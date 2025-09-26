@@ -1,5 +1,226 @@
-with open("sites.json", "r", encoding="utf-8") as f:
-    config = json.load(f)
-sites = config["sites"]
-categories = config["categories"]
-
+{
+  "sites": [
+    {
+      "key": "zy_bfzy",
+      "name": "资源-暴风影院",
+      "type": 1,
+      "api": "https://bfzyapi.com/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "filters": {
+        "region": ["大陆","香港","台湾","美国","日本","韩国"],
+        "year": ["2025","2024","2023","2022","2021","2020以前"],
+        "genre": ["动作","喜剧","爱情","科幻","恐怖","剧情","动画"]
+      }
+    },
+    {
+      "key": "zy_yzzy",
+      "name": "资源-影之资源",
+      "type": 1,
+      "api": "https://api.yzzy-api.com/inc/api_mac10_all.php",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "filters": {
+        "region": ["大陆","美国","日本","韩国"],
+        "year": ["2025","2024","2023","2022","2021","2020以前"],
+        "genre": ["动作","喜剧","爱情","科幻","恐怖"]
+      }
+    },
+    {
+      "key": "zy_tyys",
+      "name": "资源-天翼",
+      "type": 1,
+      "api": "https://tyyszyapi.com/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "filters": {
+        "region": ["大陆","美国","日本","韩国"],
+        "year": ["2025","2024","2023","2022"],
+        "genre": ["动作","喜剧","爱情","科幻"]
+      }
+    },
+    {
+      "key": "zy_suoni",
+      "name": "资源-梭尼",
+      "type": 1,
+      "api": "https://suoniapi.com/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "filters": {
+        "region": ["大陆","美国","日本"],
+        "year": ["2025","2024","2023","2022"],
+        "genre": ["动作","喜剧","爱情","科幻"]
+      }
+    },
+    {
+      "key": "zy_lziapi",
+      "name": "资源-量子",
+      "type": 1,
+      "api": "https://cj.lziapi.com/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "filters": {
+        "region": ["大陆","美国","日本"],
+        "year": ["2025","2024","2023","2022"],
+        "genre": ["动作","喜剧","爱情","科幻"]
+      }
+    },
+    {
+      "key": "zy_okzyw",
+      "name": "资源-OK",
+      "type": 1,
+      "api": "https://api.okzyw.net/api.php/provide/vod/?ac=list",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "filters": {
+        "region": ["大陆","香港","台湾"],
+        "year": ["2025","2024","2023"],
+        "genre": ["动作","喜剧","爱情","科幻","恐怖"]
+      }
+    },
+    {
+      "key": "zy_wujin",
+      "name": "资源-无尽",
+      "type": 1,
+      "api": "https://api.wujinapi.me/api.php/provide/vod/from/wjm3u8/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "filters": {
+        "region": ["大陆","美国","日本"],
+        "year": ["2025","2024","2023"],
+        "genre": ["动作","喜剧","爱情","科幻"]
+      }
+    },
+    {
+      "key": "zy_kuaiche",
+      "name": "资源-快车",
+      "type": 1,
+      "api": "https://caiji.kuaichezy.org/api.php/provide/vod/?ac=list",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "filters": {
+        "region": ["大陆","美国","日本","韩国"],
+        "year": ["2025","2024","2023"],
+        "genre": ["动作","喜剧","爱情","科幻"]
+      }
+    },
+    {
+      "key": "zy_ukuapi",
+      "name": "资源-优酷API",
+      "type": 1,
+      "api": "https://api.ukuapi88.com/api.php/provide/vod/?ac=list",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "filters": {
+        "region": ["大陆","美国","日本"],
+        "year": ["2025","2024","2023","2022"],
+        "genre": ["动作","喜剧","爱情","科幻"]
+      }
+    },
+    {
+      "key": "zy_subocj",
+      "name": "资源-速播",
+      "type": 1,
+      "api": "https://subocj.com/api.php/provide/vod",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "filters": {
+        "region": ["大陆","美国","日本"],
+        "year": ["2025","2024","2023","2022"],
+        "genre": ["动作","喜剧","爱情","科幻"]
+      }
+    },
+    {
+      "key": "zy_apibdzy",
+      "name": "资源-比特",
+      "type": 1,
+      "api": "https://api.apibdzy.com/api.php/provide/vod/?ac=list",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "filters": {
+        "region": ["大陆","香港","台湾"],
+        "year": ["2025","2024","2023"],
+        "genre": ["动作","喜剧","爱情","科幻"]
+      }
+    },
+    {
+      "key": "zy_dbzy5",
+      "name": "资源-大白",
+      "type": 1,
+      "api": "https://caiji.dbzy5.com/api.php/provide/vod/at/josn/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "filters": {
+        "region": ["大陆","美国"],
+        "year": ["2025","2024","2023"],
+        "genre": ["动作","喜剧","爱情","科幻"]
+      }
+    },
+    {
+      "key": "zy_iqiyi",
+      "name": "资源-爱奇艺",
+      "type": 1,
+      "api": "https://iqiyizyapi.com/api.php/provide/vod",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "filters": {
+        "region": ["大陆","美国","日本"],
+        "year": ["2025","2024","2023"],
+        "genre": ["动作","喜剧","爱情","科幻"]
+      }
+    },
+    {
+      "key": "zy_dytt",
+      "name": "资源-电影天堂",
+      "type": 0,
+      "api": "http://caiji.dyttzyapi.com/api.php/provide/vod/at/xml/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "filters": {}
+    },
+    {
+      "key": "zy_jszy",
+      "name": "资源-极速",
+      "type": 1,
+      "api": "https://jszyapi.com/api.php/provide/vod",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "filters": {
+        "region": ["大陆","美国","日本"],
+        "year": ["2025","2024","2023"],
+        "genre": ["动作","喜剧","爱情","科幻"]
+      }
+    },
+    {
+      "key": "zy_ffzy",
+      "name": "资源-非凡",
+      "type": 0,
+      "api": "http://api.ffzyapi.com/api.php/provide/vod/at/xml/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "filters": {}
+    }
+  ],
+  "categories": [
+    {"key": "movie", "name": "电影"},
+    {"key": "tv", "name": "电视剧"},
+    {"key": "variety", "name": "综艺"},
+    {"key": "anime", "name": "动漫"}
+  ]
+}
