@@ -19,7 +19,7 @@ class Spider(metaclass=ABCMeta):
     def fetch(self, url, params=None, headers=None, timeout=5):
         rsp = requests.get(url, params=params, headers=headers, timeout=timeout)
         rsp.encoding = 'utf-8'
-        return rsp.text
+        return rsp.text 
 
     def typeMapping(self, t):
         mapping = {
