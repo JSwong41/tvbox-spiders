@@ -2,7 +2,6 @@ import json
 import requests
 from com.github.catvod import Proxy
 from abc import ABCMeta, abstractmethod
-from lxml import etree
 
 class Spider(metaclass=ABCMeta):
     _instance = None
@@ -38,23 +37,52 @@ class Spider(metaclass=ABCMeta):
 
 class DemoSpider(Spider):
     def init(self, extend=""):
-        # 指向你在 GitHub 上的 sites.json Raw URL
+        # 这里换成你自己的 sites.json raw 地址
         self.sites_url = "https://raw.githubusercontent.com/JSwong41/tvbox-spiders/refs/heads/main/assets/sites.json"
         self.sites = json.loads(self.fetch(self.sites_url))['sites']
 
+    # 首页分类，支持 filters
     def homeContent(self, filter=None):
         classes = []
         for site in self.sites:
-            classes.append({"type_id": site['key'], "type_name": site['name']})
+            # 简单提供默认 filters: 类型和年份
+            filters = [
+                {
+                    "key": "type_name",
+                    "name": "类型",
+                    "value": [
+                        {"n": "动作片", "v": "动作片"},
+                        {"n": "喜剧片", "v": "喜剧片"},
+                        {"n": "爱情片", "v": "爱情片"},
+                        {"n": "科幻片", "v": "科幻片"},
+                        {"n": "恐怖片", "v": "恐怖片"},
+                        {"n": "剧情片", "v": "剧情片"},
+                        {"n": "纪录片", "v": "纪录片"},
+                        {"n": "动画片", "v": "动画片"}
+                    ]
+                },
+                {
+                    "key": "year",
+                    "name": "年份",
+                    "value": [{"n": str(y), "v": str(y)} for y in range(2025, 2015, -1)]
+                }
+            ]
+            classes.append({"type_id": site['key'], "type_name": site['name'], "filters": filters})
         return {"class": classes}
 
+    # 分类内容
     def categoryContent(self, tid, pg, filter, extend):
         site = next((s for s in self.sites if s['key'] == tid), None)
         if not site:
             return {"list": []}
-        url = site['api']
+
+        params = {}
+        if filter:
+            for f in filter:
+                params[f['key']] = f['value']
+
         try:
-            data = json.loads(self.fetch(url))
+            data = json.loads(self.fetch(site['api'], params=params))
             vods = []
             for item in data.get("list", []):
                 vods.append({
@@ -67,6 +95,7 @@ class DemoSpider(Spider):
         except:
             return {"list": []}
 
+    # 详情内容
     def detailContent(self, ids):
         tid, vid = ids.split('$')
         site = next((s for s in self.sites if s['key'] == tid), None)
@@ -93,6 +122,7 @@ class DemoSpider(Spider):
         except:
             return {}
 
+    # 搜索
     def searchContent(self, key, quick, pg="1"):
         results = []
         for site in self.sites:
@@ -110,6 +140,7 @@ class DemoSpider(Spider):
                 continue
         return {"list": results}
 
+    # 播放
     def playerContent(self, flag, id, vipFlags):
         tid, vid = id.split('$')
         site = next((s for s in self.sites if s['key'] == tid), None)
