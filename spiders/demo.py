@@ -38,7 +38,8 @@ class Spider(metaclass=ABCMeta):
 
 class DemoSpider(Spider):
     def init(self, extend=""):
-        self.sites_url = "https://raw.githubusercontent.com/YOUR_GITHUB/sources/main/sites.json"
+        # 指向你在 GitHub 上的 sites.json Raw URL
+        self.sites_url = "https://raw.githubusercontent.com/JSwong41/tvbox-spiders/refs/heads/main/assets/sites.json"
         self.sites = json.loads(self.fetch(self.sites_url))['sites']
 
     def homeContent(self, filter=None):
@@ -48,7 +49,6 @@ class DemoSpider(Spider):
         return {"class": classes}
 
     def categoryContent(self, tid, pg, filter, extend):
-        # tid 对应 site key
         site = next((s for s in self.sites if s['key'] == tid), None)
         if not site:
             return {"list": []}
@@ -64,7 +64,7 @@ class DemoSpider(Spider):
                     "vod_remarks": item.get("vod_remarks", "")
                 })
             return {"list": vods}
-        except Exception as e:
+        except:
             return {"list": []}
 
     def detailContent(self, ids):
