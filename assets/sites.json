@@ -1,1 +1,5 @@
+with open("sites.json", "r", encoding="utf-8") as f:
+    config = json.load(f)
+sites = config["sites"]
+categories = config["categories"]
 
